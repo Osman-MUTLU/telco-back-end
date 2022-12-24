@@ -130,3 +130,4 @@ dmypy.json
 
 #pkl
 .pkl
+Model/Model.pkl

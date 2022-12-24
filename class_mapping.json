@@ -1,0 +1,26 @@
+{
+    "InternetService": {
+        "DSL": 0,
+        "Fiber optic": 1,
+        "No": 2
+    },
+    "Contract": {
+        "Month-to-month": 0,
+        "One year": 1,
+        "Two year": 2
+    },
+    "PaymentMethod": {
+        "Bank transfer (automatic)": 0,
+        "Credit card (automatic)": 1,
+        "Electronic check": 2,
+        "Mailed check": 3
+    },
+    "TENURE_YEAR": {
+        "0-1 Year": 0,
+        "1-2 Year": 1,
+        "2-3 Year": 2,
+        "3-4 Year": 3,
+        "4-5 Year": 4,
+        "5-6 Year": 5
+    }
+}
