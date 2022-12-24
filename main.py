@@ -16,6 +16,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
 @app.post("/predict", response_model=ResponseModel)
 async def predict(question: Question):
     return prediction(question)
