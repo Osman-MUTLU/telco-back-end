@@ -66,11 +66,6 @@ def preProcess(question: Question):
                                 'totalServices':'TotalServices'}, inplace=True)
     df = featureExtraction(df)
     df = one_hot_encoding(df)
-    print(df.head())
-    print(df.columns)
-   
-    # save to csv
-    df.to_csv("data.csv", index=False)
     return df
 
 def featureExtraction(df):
