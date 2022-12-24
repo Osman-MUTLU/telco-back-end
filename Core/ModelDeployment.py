@@ -1,7 +1,7 @@
 import joblib
 
 model = joblib.load('Model/Model.pkl')
-OPTIMAL_THRESHOLD = 0.1990166589920821
+OPTIMAL_THRESHOLD = 0.27080240490624297
 
 def modelprediction(data):
     return model.predict(data)

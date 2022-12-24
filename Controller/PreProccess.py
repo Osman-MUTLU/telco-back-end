@@ -10,34 +10,49 @@ def one_hot_encoding(df):
     # one hot encoding
     df.loc[df["Contract"] == 2, "Contract_2.0"] = 1
     df.loc[df["Contract"] != 2, "Contract_2.0"] = 0
+
     df.loc[df["PaymentMethod"] == 2, "PaymentMethod_2.0"] = 1
     df.loc[df["PaymentMethod"] != 2, "PaymentMethod_2.0"] = 0
+
     df.loc[df["InternetService"] == 1, "InternetService_1.0"] = 1
     df.loc[df["InternetService"] != 1, "InternetService_1.0"] = 0
+
     df.loc[df["InternetService"] == 2, "InternetService_2.0"] = 1
     df.loc[df["InternetService"] != 2, "InternetService_2.0"] = 0
+
     df.loc[df["Contract"] == 1, "Contract_1.0"] = 1
     df.loc[df["Contract"] != 1, "Contract_1.0"] = 0
+
     df.loc[df["SeniorCitizen"] == 1, "SeniorCitizen_1.0"] = 1
     df.loc[df["SeniorCitizen"] != 1, "SeniorCitizen_1.0"] = 0
+
     df.loc[df["OnlineSecurity"] == 1, "OnlineSecurity_1.0"] = 1
     df.loc[df["OnlineSecurity"] != 1, "OnlineSecurity_1.0"] = 0
+
     df.loc[df["Dependents"] == 1, "Dependents_1.0"] = 1
     df.loc[df["Dependents"] != 1, "Dependents_1.0"] = 0
+
     df.loc[df["TechSupport"] == 1, "TechSupport_1.0"] = 1
     df.loc[df["TechSupport"] != 1, "TechSupport_1.0"] = 0
+
     df.loc[df["PaymentMethod"] == 1, "PaymentMethod_1.0"] = 1
     df.loc[df["PaymentMethod"] != 1, "PaymentMethod_1.0"] = 0
+
     df.loc[df["PaperlessBilling"] == 1, "PaperlessBilling_1.0"] = 1
     df.loc[df["PaperlessBilling"] != 1, "PaperlessBilling_1.0"] = 0
+
     df.loc[df["TotalServices"] == 2, "NEW_TotalServices_2.0"] = 1
     df.loc[df["TotalServices"] != 2, "NEW_TotalServices_2.0"] = 0
+    # aylık ödeme tutarına göre müşterileri kategorize etme "50-75"
+    df.loc[(df["MonthlyCharges"] >= 50) & (df["MonthlyCharges"] <= 75), "NEW_MonthlyCharges_2.0"] = 1
+    df.loc[(df["MonthlyCharges"] < 50) | (df["MonthlyCharges"] > 75), "NEW_MonthlyCharges_2.0"] = 0
+
     df.loc[df["Partner"] == 1, "Partner_1.0"] = 1
     df.loc[df["Partner"] != 1, "Partner_1.0"] = 0
+
     df.loc[df["TENURE_YEAR"] == 4, "NEW_TENURE_YEAR_4.0"] = 1
     df.loc[df["TENURE_YEAR"] != 4, "NEW_TENURE_YEAR_4.0"] = 0
-    df.loc[df["TotalServices"] == 6, "NEW_TotalServices_6.0"] = 1
-    df.loc[df["TotalServices"] != 6, "NEW_TotalServices_6.0"] = 0
+    
     df.drop(['PaymentMethod', 'Contract', 'InternetService', 'SeniorCitizen', 'OnlineSecurity', 'TechSupport', 'Dependents',
                 'PaperlessBilling', 'Partner', 'TotalServices', 'TENURE_YEAR','TotalCharges','AVG_Charges'], axis=1, inplace=True)
     return df
@@ -93,7 +108,7 @@ def featureExtraction(df):
         df.loc[df["PaymentMethod"] == "Mailed check", "PaymentMethod"] = class_mapping["PaymentMethod"]["Mailed check"]
         df.loc[df["PaymentMethod"] == "Bank transfer (automatic)", "PaymentMethod"] = class_mapping["PaymentMethod"]["Bank transfer (automatic)"]
         df.loc[df["PaymentMethod"] == "Credit card (automatic)", "PaymentMethod"] = class_mapping["PaymentMethod"]["Credit card (automatic)"]
-
+        
         
         df["AVG_Charges"] = df["TotalCharges"] / (df["tenure"] +0.1)
         df["Increase"] = df["AVG_Charges"] / (df["MonthlyCharges"] + 1)
